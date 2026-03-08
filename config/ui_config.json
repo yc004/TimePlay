@@ -1,0 +1,135 @@
+{
+  "calendar_view": {
+    "description": "课程表视图配置",
+    "fonts": {
+      "weekday_header": {
+        "size": 20,
+        "weight": "bold",
+        "color": "white"
+      },
+      "task_name": {
+        "size": 25,
+        "weight": "bold",
+        "color": "#1976D2"
+      },
+      "time_display": {
+        "size": 20,
+        "weight": "bold",
+        "color": "#555"
+      },
+      "time_label": {
+        "size": 18,
+        "weight": "bold",
+        "color": "#1976D2"
+      },
+      "playlist_content": {
+        "size": 20,
+        "weight": "normal",
+        "color": "#444"
+      },
+      "empty_cell": {
+        "size": 32,
+        "color": "#BDBDBD"
+      }
+    },
+    "layout": {
+      "grid_spacing": 2,
+      "task_block_padding": 12,
+      "task_block_spacing": 10,
+      "content_line_height": 1.8,
+      "time_column_min_width": 90,
+      "time_column_max_width": 110,
+      "header_min_height": 45,
+      "header_max_height": 55,
+      "cell_min_height": 80
+    },
+    "colors": {
+      "playlist_bg": "#E8F5E9",
+      "playlist_border": "#4CAF50",
+      "video_bg": "#FFF9C4",
+      "video_border": "#FBC02D",
+      "web_bg": "#E1F5FE",
+      "web_border": "#03A9F4",
+      "empty_cell_bg": "#FAFAFA",
+      "empty_cell_border": "#E0E0E0",
+      "header_bg": "#2196F3",
+      "header_border": "#1976D2",
+      "corner_bg": "#1976D2",
+      "corner_border": "#0D47A1",
+      "time_label_bg": "#E3F2FD",
+      "time_label_border": "#BBDEFB"
+    },
+    "content": {
+      "max_playlist_items": 5,
+      "filename_max_length": 20,
+      "show_icons": true,
+      "icons": {
+        "video": "🎬",
+        "image": "🖼️",
+        "web": "🌐",
+        "unknown": "📄"
+      }
+    },
+    "time_indicator": {
+      "enabled": true,
+      "color": "#F44336",
+      "width": 3,
+      "style": "solid",
+      "opacity": 0.9,
+      "show_time_label": true,
+      "time_label_bg": "#F44336",
+      "time_label_color": "white",
+      "time_label_size": 12,
+      "update_interval": 60000
+    }
+  },
+  "list_view": {
+    "description": "列表视图配置",
+    "fonts": {
+      "table_content": {
+        "size": 12,
+        "weight": "normal"
+      },
+      "header": {
+        "size": 13,
+        "weight": "bold"
+      }
+    },
+    "layout": {
+      "row_height": 30
+    }
+  },
+  "dialogs": {
+    "description": "对话框配置",
+    "fonts": {
+      "title": {
+        "size": 18,
+        "weight": "bold"
+      },
+      "label": {
+        "size": 12,
+        "weight": "normal"
+      },
+      "button": {
+        "size": 12,
+        "weight": "normal"
+      }
+    }
+  },
+  "general": {
+    "description": "通用UI配置",
+    "window": {
+      "default_width": 1100,
+      "default_height": 700,
+      "min_width": 800,
+      "min_height": 600
+    },
+    "theme": {
+      "primary_color": "#2196F3",
+      "secondary_color": "#4CAF50",
+      "accent_color": "#FBC02D",
+      "text_color": "#333333",
+      "background_color": "#FFFFFF"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "streams": [
+    {
+      "name": "CCTV1综合",
+      "type": "stream",
+      "url": "http://[直播流地址]/cctv1.m3u8",
+      "description": "央视综合频道"
+    },
+    {
+      "name": "CCTV13新闻",
+      "type": "stream",
+      "url": "http://[直播流地址]/cctv13.m3u8",
+      "description": "央视新闻频道"
+    },
+    {
+      "name": "CCTV1网页版",
+      "type": "webpage",
+      "url": "https://tv.cctv.com/live/cctv1/",
+      "description": "央视综合频道网页版"
+    },
+    {
+      "name": "CCTV13网页版",
+      "type": "webpage",
+      "url": "https://tv.cctv.com/live/cctv13/",
+      "description": "央视新闻频道网页版"
+    }
+  ],
+  "注意": "请将 [直播流地址] 替换为实际的直播流服务器地址"
+}
