@@ -154,13 +154,25 @@ class LauncherWindow(QMainWindow):
             # 使用start_with_selenium.py而不是run.py
             script_path = os.path.join(project_root, 'start_with_selenium.py')
             
-            # 在Windows上使用CREATE_NEW_CONSOLE标志
+            # 在Windows上隐藏控制台窗口
             if sys.platform == 'win32':
-                # 创建新的控制台窗口
+                # 使用pythonw.exe（无窗口模式）或隐藏控制台
+                startupinfo = subprocess.STARTUPINFO()
+                startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+                startupinfo.wShowWindow = subprocess.SW_HIDE
+                
+                # 尝试使用pythonw.exe（无控制台窗口）
+                python_exe = sys.executable
+                if python_exe.endswith('python.exe'):
+                    pythonw_exe = python_exe.replace('python.exe', 'pythonw.exe')
+                    if os.path.exists(pythonw_exe):
+                        python_exe = pythonw_exe
+                
                 process = subprocess.Popen(
-                    ['python', script_path],
+                    [python_exe, script_path],
                     cwd=project_root,
-                    creationflags=subprocess.CREATE_NEW_CONSOLE
+                    startupinfo=startupinfo,
+                    creationflags=subprocess.CREATE_NO_WINDOW if hasattr(subprocess, 'CREATE_NO_WINDOW') else 0
                 )
             else:
                 process = subprocess.Popen(
@@ -174,7 +186,8 @@ class LauncherWindow(QMainWindow):
             QMessageBox.information(self, "成功", 
                 "播放系统已启动\n\n"
                 "空闲窗口应该已显示（黑屏+时钟）\n"
-                "等待播放任务开始时会自动切换到播放内容")
+                "等待播放任务开始时会自动切换到播放内容\n\n"
+                "注意：播放系统在后台运行，没有控制台窗口")
             
         except Exception as e:
             import traceback

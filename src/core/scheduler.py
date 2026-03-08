@@ -253,3 +253,31 @@ class EnhancedScheduler(QObject):
             return int(remaining)
         except:
             return 0
+    
+    def get_current_task(self):
+        """
+        获取当前应该执行的任务
+        
+        Returns:
+            dict: 当前任务，如果没有则返回None
+        """
+        now = datetime.now()
+        current_time = now.strftime("%H:%M")
+        current_weekday = now.isoweekday()
+        
+        return self._find_active_schedule(current_time, current_weekday)
+    
+    def execute_task(self, task):
+        """
+        执行指定的任务
+        
+        Args:
+            task: 要执行的任务字典
+        """
+        if not task:
+            return
+        
+        self.logger.info(f"看门狗触发任务执行: {task.get('name', '未知')}")
+        self.current_schedule = task
+        self.playlist_index = 0
+        self._execute_schedule(task)

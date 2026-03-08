@@ -1,4 +1,6 @@
-log/
+logs/
 .pytest_cache
 __pycache__
 tests
+test_*.py
+test_*.bat
