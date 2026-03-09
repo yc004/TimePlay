@@ -93,6 +93,11 @@ class LauncherWindow(QMainWindow):
         btn_autostart.clicked.connect(self.open_autostart_settings)
         config_layout.addWidget(btn_autostart)
         
+        btn_chromedriver = QPushButton("ChromeDriver 配置")
+        btn_chromedriver.setStyleSheet(self._get_button_style("#2196F3"))
+        btn_chromedriver.clicked.connect(self.open_chromedriver_config)
+        config_layout.addWidget(btn_chromedriver)
+        
         layout.addWidget(config_group)
         
         # 测试工具
@@ -287,6 +292,15 @@ class LauncherWindow(QMainWindow):
             script_path = os.path.join(project_root, 'src', 'utils', 'auto_start.py')
             subprocess.Popen(['python', script_path], cwd=project_root)
             self.status_label.setText("已打开开机自启动设置")
+        except Exception as e:
+            QMessageBox.critical(self, "错误", f"打开失败: {e}")
+    
+    def open_chromedriver_config(self):
+        """打开ChromeDriver配置"""
+        try:
+            script_path = os.path.join(project_root, 'src', 'ui', 'chromedriver_config.py')
+            subprocess.Popen(['python', script_path], cwd=project_root)
+            self.status_label.setText("已打开ChromeDriver配置")
         except Exception as e:
             QMessageBox.critical(self, "错误", f"打开失败: {e}")
     

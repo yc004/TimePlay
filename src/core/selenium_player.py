@@ -9,6 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from src.utils.logger import Logger
+from config.config import CHROMEDRIVER_CONFIG
 
 class SeleniumPlayer:
     """基于Selenium的播放器 - 模拟真实浏览器"""
@@ -75,7 +76,18 @@ class SeleniumPlayer:
             
             # 创建driver
             self.logger.info("初始化ChromeDriver...")
-            self.driver = webdriver.Chrome(options=chrome_options)
+            
+            # 检查是否配置了自定义ChromeDriver路径
+            custom_path = CHROMEDRIVER_CONFIG.get('custom_path', '')
+            if custom_path and os.path.exists(custom_path):
+                self.logger.info(f"使用自定义ChromeDriver: {custom_path}")
+                service = Service(executable_path=custom_path)
+                self.driver = webdriver.Chrome(service=service, options=chrome_options)
+            else:
+                if custom_path:
+                    self.logger.warning(f"自定义ChromeDriver路径不存在: {custom_path}")
+                self.logger.info("使用系统PATH中的ChromeDriver")
+                self.driver = webdriver.Chrome(options=chrome_options)
             
             # 关键: 移除webdriver标识
             self.driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {

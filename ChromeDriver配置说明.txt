@@ -1,0 +1,119 @@
+================================================================================
+ChromeDriver 手动配置功能使用说明
+================================================================================
+
+一、功能概述
+------------
+系统现在支持手动配置 ChromeDriver 文件位置，方便管理不同版本的 ChromeDriver。
+
+二、打开配置界面
+----------------
+方法1：通过启动器
+  1. 运行 scripts\launcher.bat
+  2. 点击 "ChromeDriver 配置" 按钮
+
+方法2：直接运行
+  双击 scripts\chromedriver_config.bat
+
+方法3：命令行
+  python src/ui/chromedriver_config.py
+
+三、配置步骤
+------------
+1. 检测版本
+   - 点击 "检测 Chrome 版本" 查看浏览器版本
+   - 点击 "检测 ChromeDriver 版本" 查看驱动版本
+   - 确认两者主版本号（第一个数字）是否相同
+
+2. 配置路径（可选）
+   - 如果 ChromeDriver 不在系统 PATH 中
+   - 点击 "浏览..." 选择 ChromeDriver 文件
+   - 或直接输入完整路径
+
+3. 启用自动检测（推荐）
+   - 勾选 "启用自动检测"
+   - 如果自定义路径无效，自动使用系统 PATH
+
+4. 测试连接
+   - 点击 "测试连接" 验证配置
+   - 看到 "✓ 连接测试成功" 即可
+
+5. 保存配置
+   - 点击 "保存配置"
+   - 重启播放系统后生效
+
+四、常见配置
+------------
+配置1：使用系统 PATH（推荐）
+  - 路径留空
+  - 勾选 "启用自动检测"
+  - 适用：ChromeDriver 已在 PATH 中
+
+配置2：指定自定义路径
+  - 输入 ChromeDriver 完整路径
+  - 例如：C:\tools\chromedriver.exe
+  - 勾选 "启用自动检测"
+  - 适用：ChromeDriver 在特定位置
+
+配置3：项目目录（便携式）
+  - 输入相对路径
+  - 例如：drivers\chromedriver.exe
+  - 勾选 "启用自动检测"
+  - 适用：便携式部署
+
+五、获取 ChromeDriver
+---------------------
+方法1：自动安装（推荐）
+  python install_chromedriver.py
+
+方法2：手动下载
+  1. 访问 https://chromedriver.chromium.org/downloads
+  2. 下载与 Chrome 版本匹配的版本
+  3. 解压得到 chromedriver.exe
+  4. 使用配置界面指定路径
+
+六、版本匹配
+------------
+重要：ChromeDriver 版本必须与 Chrome 浏览器版本匹配！
+
+主版本号（第一个数字）必须相同：
+  Chrome 120.0.6099.109  →  ChromeDriver 120.x.x.x  ✓
+  Chrome 119.0.6045.105  →  ChromeDriver 120.x.x.x  ✗
+
+七、故障排除
+------------
+问题1：找不到 ChromeDriver
+  解决：运行 python install_chromedriver.py
+
+问题2：版本不匹配
+  解决：下载匹配版本或运行自动安装
+
+问题3：测试连接失败
+  解决：检查路径是否正确，版本是否匹配
+
+问题4：配置不生效
+  解决：确认已保存配置，重启播放系统
+
+八、配置文件
+------------
+配置保存在：config/config.py
+
+CHROMEDRIVER_CONFIG = {
+    'custom_path': '',      # ChromeDriver 路径
+    'auto_detect': True     # 自动检测
+}
+
+九、相关文档
+------------
+详细文档：docs/ChromeDriver配置指南.md
+快速配置：docs/ChromeDriver快速配置.md
+更新日志：CHANGELOG.md
+
+十、技术支持
+------------
+如有问题，请查看：
+  1. 日志文件：logs/tv_system_*.log
+  2. 配置界面的检测工具
+  3. 详细文档
+
+================================================================================

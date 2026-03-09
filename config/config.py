@@ -29,3 +29,9 @@ NETWORK_CONFIG = {
     'retry_interval': 5,  # 重试间隔(秒)
     'max_retry': 3  # 最大重试次数
 }
+
+# ChromeDriver 配置
+CHROMEDRIVER_CONFIG = {
+    'custom_path': '',  # 自定义ChromeDriver路径（留空则使用系统PATH）
+    'auto_detect': True  # 是否自动检测ChromeDriver
+}
